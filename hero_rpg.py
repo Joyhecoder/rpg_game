@@ -7,7 +7,19 @@
 import characters
 
 
+# hero = Character("Good guy", 20, 5)
+# goblin = Character("Bad guy",15, 2)
+# hero= Hero(20, 2)
+# hero.attack(goblin)
 
+medic = characters.Medic("medic guy", 20, 5)
+# medic.attack(goblin)
+
+# shadow=Shadow(1,2)
+# shadow.attack(goblin)
+
+zombie=characters.Zombie("Zombie", 5,5)
+# zombie.attack(medic)
 
 
 
@@ -29,6 +41,7 @@ def main():
             print("1. fight goblin")
             print("2. do nothing")
             print("3. flee")
+            print("4. fight Medic")
             print("> ", end=' ')
             raw_input = input()
             if raw_input == "1":
@@ -42,6 +55,8 @@ def main():
             elif raw_input == "3":
                 print("Goodbye.")
                 break
+            elif raw_input == "4":
+                hero.attack1(medic)
             else:
                 print("Invalid input {}".format(raw_input))
 
