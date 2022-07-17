@@ -33,13 +33,15 @@ class Hero(Character):
         possibility = random.choice(list_of_num)  
         if possibility < 3:
             enemy.health -= self.power *2
-            print(f'You gave {self.power *2} damage to the {enemy.name}')
+            print(f'You did {self.power *2} damage to the {enemy.name}')
             if enemy.health <= 0:
                 print(f'The {enemy.name} is dead.')
                 
+                
+                
         elif possibility > 2:
             enemy.health -= self.power
-            print(f"You gave {self.power} damages to the {enemy.name}.")
+            print(f"You did {self.power} damages to the {enemy.name}.")
             if enemy.health <= 0:
                 print(f'The {enemy.name} is dead.')
         
@@ -99,6 +101,26 @@ class Unicorn(Character):
         friend.power += self.power
         print(f'My friend {self.name} just gave me {self.power} power points. Oh yea!') 
                    
+
+class Item:
+    def __init__(self, health, power):
+        self.health = health
+        self.power = power
+    def gift(self, friend):
+        friend.health += self.health
+        friend.power += self.power
+        print(f'{self.name} just gave {self.health} health points to {friend.name}. ')
+        print(f'{self.name} also gave {self.power} power points to {friend.name}.')
+        
+        
+class Whiskey(Item):
+    def __init__(self, health, power):
+        super(Whiskey, self).__init__(health, power)
+        self.name = "Whiskey"
+    
+
+
+
 hero= Hero(100, 20)
 goblin= Goblin(150, 10)
 medic= Medic(150, 10)
@@ -106,6 +128,8 @@ shadow= Shadow(1, 10)
 zombie= Zombie(5,5)
 thor= Thor(20, 20)
 unicorn = Unicorn(10, 10)
+whiskey = Whiskey(10, 10)
+
 def main():
 
    
@@ -122,6 +146,7 @@ def main():
             print("6. fight Zombie")
             print("7. call Thor")
             print("8. call Unicorn")
+            print("9. shopping time")
             print("> ", end=' ')
             raw_input = input()
             if raw_input == "1":
@@ -140,10 +165,66 @@ def main():
                 shadow.no_damage(hero)
             elif raw_input == "6":
                 zombie.never_die(hero)
+                print('''
+                                ,
+          _,-""-._
+        ,"        ".
+       /    ,-,  ,"\      You should not fight me cuz I never die hehehe!
+      "    /   \ | o|
+      \    `-o-"  `-',
+       `,   _.--'`'--`
+         `--`---'                    |   _)
+           ,' '      _  /  _ \  ` \   _ \ |  -_)
+         ./ ,  `,    ___|\___/_|_|_|_.__/_|\___|
+         / /     \
+        (_)))_ _,"
+           _))))_,
+  --------(_,-._)))-------------------------------
+  ''')
             elif raw_input == "7":
                 thor.call_thor(hero)
             elif raw_input == "8":
+                print(''')
+                    \.
+     \'.      ;.
+      \ '. ,--''-.~-~-'-,
+       \,-' ,-.   '.~-~-~~,
+     ,-'   (###)    \-~'~=-.
+ _,-'       '-'      \=~-"~~',
+/o                    \~-""~=-,
+\__                    \=-,~"-~,
+   """===-----.         \~=-"~-.
+               \         \*=~-"
+          rs    \         "=====----
+                 \
+                  \
+                      I am coming to save you Bro! 
+                      ''')
                 unicorn.steal_power(hero)
+                
+            elif raw_input == "9":  
+                whiskey.gift(hero)
+                print('''   
+                _
+       |-|
+       |~|
+       |:|   WINE AND CHEESE
+      .'.'.
+     /   ::\
+     |_____|     __          _
+     |:.:;.|   <:__:>     .-'o\
+     |_____|   \  ::/  .o' O. o\
+     |   ::|    '..'  |--o.--o--|
+     |   ;:|     ||   |._._o_._.|
+     \_____/    .''.
+               '----'     pjb
+                  
+               Consume at your own risk!   
+                  
+                  
+                  ''')
+           
+                
                 
                 
             else:
